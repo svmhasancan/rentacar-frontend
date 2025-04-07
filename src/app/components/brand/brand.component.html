@@ -1,0 +1,6 @@
+<ul class="list-group">
+    <li 
+    *ngFor="let brand of brands"
+    (click) = "setCurrentBrand(brand)"
+    [ngClass]="setClassNameOfCurrentBrand(brand)">{{brand.name}}</li>
+</ul>
