@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CarComponent } from './components/car/car.component';
+import { CarDetailDtoComponent } from './components/car-detail-dto/car-detail-dto.component';
 
 const routes: Routes = [
-  {path : '' , pathMatch : 'full' , component : CarComponent},
-  {path : 'cars' , component : CarComponent},
-  {path : 'cars/brand/:brandId' , component: CarComponent}
+  { path: '', pathMatch: 'full', component: CarDetailDtoComponent },
+  { path: 'cars', component: CarDetailDtoComponent },
+  { path: 'cars/brand/:brandId', component: CarDetailDtoComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
