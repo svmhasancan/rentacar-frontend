@@ -1,0 +1,25 @@
+.list-group-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.list-group-item:hover {
+    background-color: #f4f5f7;
+    cursor: pointer;
+}
+
+.list-group-item-active {
+    background-color: #10b981;
+    color: white;
+}
+
+.list-group-item-action {
+    border-radius: 0.5rem;
+}
+
+.list-group {
+    padding: 0;
+}

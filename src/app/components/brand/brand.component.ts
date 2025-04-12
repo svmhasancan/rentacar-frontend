@@ -13,9 +13,7 @@ export class BrandComponent implements OnInit {
 
   currentBrand: Brand;
 
-  constructor(
-    private brandService: BrandService,
-    private router:Router) {}
+  constructor(private brandService: BrandService, private router: Router) {}
 
   ngOnInit(): void {
     this.getBrands();
@@ -33,16 +31,14 @@ export class BrandComponent implements OnInit {
   }
 
   routeToBrandCars(): void {
-    this.router.navigate(['cars/brand/',this.currentBrand.id])
+    this.router.navigate(['cars/brand/', this.currentBrand.name]);
   }
 
-  setClassNameOfCurrentBrand(brand : Brand) : string {
-    
-    if(this.currentBrand && brand.id === this.currentBrand.id){
-      return "list-group-item active"
-    }
-    else{
-      return "list-group-item"
+  setClassNameOfCurrentBrand(brand: Brand): string {
+    if (this.currentBrand && brand.id === this.currentBrand.id) {
+      return 'list-group-item active';
+    } else {
+      return 'list-group-item';
     }
   }
 }

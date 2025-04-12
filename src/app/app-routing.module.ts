@@ -5,7 +5,7 @@ import { CarDetailDtoComponent } from './components/car-detail-dto/car-detail-dt
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: CarDetailDtoComponent },
   { path: 'cars', component: CarDetailDtoComponent },
-  { path: 'cars/brand/:brandId', component: CarDetailDtoComponent },
+  { path: 'cars/brand/:brandName', component: CarDetailDtoComponent },
 ];
 
 @NgModule({

@@ -9,10 +9,20 @@ import { CarDetailDto } from '../models/car-detail-dto';
   providedIn: 'root',
 })
 export class CarDetailDtoService {
-  apiUrl = 'https://localhost:44336/api/Cars/getcarbydetails';
+  apiUrl = 'https://localhost:44336/api/Cars/';
   constructor(private httpClient: HttpClient) {}
 
+  // https://localhost:44336/api/Cars/
   getCarsByDetail(): Observable<ListResponseModel<CarDetailDto>> {
-    return this.httpClient.get<ListResponseModel<CarDetailDto>>(this.apiUrl);
+    let newUrl = this.apiUrl + 'getcarbydetails';
+    return this.httpClient.get<ListResponseModel<CarDetailDto>>(newUrl);
+  }
+
+  getCarsByBrandName(
+    brandName: string
+  ): Observable<ListResponseModel<CarDetailDto>> {
+    let newUrl =
+      this.apiUrl + 'getcardetailsbybrandname?brandName=' + brandName;
+    return this.httpClient.get<ListResponseModel<CarDetailDto>>(newUrl);
   }
 }
