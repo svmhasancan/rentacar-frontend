@@ -46,3 +46,9 @@ button {
 .p-6 {
     padding: 1.5rem;
 }
+
+.car-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}

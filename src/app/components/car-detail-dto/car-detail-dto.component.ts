@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CarDetailDto } from 'src/app/models/car-detail-dto';
+import { CarImage } from 'src/app/models/carImage';
 import { CarDetailDtoService } from 'src/app/services/car-detail-dto.service';
 import { CartService } from 'src/app/services/cart.service';
 
