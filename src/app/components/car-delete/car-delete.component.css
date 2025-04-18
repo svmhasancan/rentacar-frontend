@@ -1,0 +1,54 @@
+.bg-white {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bg-white:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.text-2xl {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.text-sm {
+    font-size: 0.875rem;
+    color: #555;
+}
+
+.text-gray-600 {
+    color: #6b7280;
+}
+
+.bg-green-500 {
+    background-color: #10b981;
+}
+
+.bg-green-500:hover {
+    background-color: #059669;
+}
+
+button {
+    transition: background-color 0.3s ease;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.p-6 {
+    padding: 1.5rem;
+}
+
+.car-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
