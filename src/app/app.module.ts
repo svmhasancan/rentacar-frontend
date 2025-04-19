@@ -16,6 +16,9 @@ import { CarDetailDtoComponent } from './components/car-detail-dto/car-detail-dt
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { CarDeleteComponent } from './components/car-delete/car-delete.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { CarDeleteComponent } from './components/car-delete/car-delete.component
     CartSummaryComponent,
     CarAddComponent,
     CarDeleteComponent,
+    CarUpdateComponent,
+    RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

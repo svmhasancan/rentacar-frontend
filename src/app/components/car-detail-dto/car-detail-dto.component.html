@@ -1,19 +1,11 @@
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-    <div *ngFor="let car of cars"
-        class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
-        <div>
-            <img src="assets/default-car3.jpg" alt="{{car.carName}}" class="h-48 w-full object-cover" />
-        </div>
-        <div class="p-6 space-y-4">
-            <h2 class="text-2xl font-bold text-gray-800">{{ car.carName }}</h2>
-            <p class="text-sm text-gray-600"><strong>Marka:</strong> {{ car.brandName }}</p>
-            <p class="text-sm text-gray-600"><strong>Renk:</strong> {{ car.colorName }}</p>
-            <p class="text-sm text-gray-600"><strong>Model:</strong> {{car.modelYear}}</p>
-            <p class="text-sm text-gray-600"><strong>Açıklama:</strong> {{car.description || "Açıklama Yok"}}</p>
-            <div class="flex justify-between items-center mt-4">
-                <span class="text-lg text-green-600 font-bold">{{ car.dailyPrice | currency:'TRY' }} </span>
-                <button (click)="addToCart(car)"
-                    class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition duration-300">Kirala</button>
+<div class="car-list container py-4">
+    <div class="row g-4">
+        <div class="col-md-4" *ngFor="let car of cars">
+            <div class="car-card p-3 rounded shadow-sm">
+                <img [src]="car.carImages" alt="{{car.brandName}} {{car.modelYear}}" class="img-fluid rounded mb-3">
+                <h5 class="car-title">{{car.carName}} {{car.modelYear}}</h5>
+                <p class="car-price">{{car.dailyPrice}} ₺ / Gün</p>
+                <button class="btn btn-outline-light w-100">Detaylar</button>
             </div>
         </div>
     </div>

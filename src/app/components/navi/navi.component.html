@@ -1,4 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light px-6 py-3 shadow-md">
-    <a class="navbar-brand text-2xl font-semibold text-green-600" href="#">Rent A Car</a>
-    <app-cart-summary></app-cart-summary>
+<nav class="navbar d-flex justify-content-between align-items-center">
+    <a routerLink="/" class="navbar-brand">🚗 Rentify</a>
+
+    <div class="d-flex align-items-center">
+        <a routerLink="/cars" class="nav-link">Araçlar</a>
+        <a routerLink="/car-add" class="nav-link">Araç Ekle</a>
+        <a routerLink="/car-delete" class="nav-link">Araç Sil</a>
+        <a routerLink="/register" class="nav-link">Kayıt Ol</a>
+        <a routerLink="/login" class="nav-link">Giriş Yap</a>
+    </div>
+
+    <div class="cart-dropdown">
+        <div class="fw-bold mb-2">Sepet</div>
+        <button class="btn btn-outline-danger me-2">Temizle</button>
+        <button class="btn btn-primary">Satın Al</button>
+    </div>
 </nav>

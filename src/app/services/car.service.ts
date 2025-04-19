@@ -31,4 +31,13 @@ export class CarService {
     let newUrl = this.apiUrl + '/delete';
     return this.httpClient.post<ResponseModel>(newUrl, car);
   }
+
+  // Add this method to the existing car.service.ts file
+  getCarById(id: number) {
+    return this.httpClient.get<any>(`${this.apiUrl}/${id}`);
+  }
+
+  updateCar(id: number, car: any) {
+    return this.httpClient.put<any>(`${this.apiUrl}/${id}`, car);
+  }
 }
