@@ -25,6 +25,11 @@ export class BrandComponent implements OnInit {
     });
   }
 
+  getBrandIcon(brand: Brand): string {
+    const iconPath = 'assets/icons/brands/' + brand.name.toLowerCase() + '.png';
+    return iconPath;
+  }
+
   setCurrentBrand(brand: Brand): void {
     this.currentBrand = { id: brand.id, name: brand.name };
     this.routeToBrandCars();

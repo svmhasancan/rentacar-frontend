@@ -14,6 +14,8 @@ import { CartService } from 'src/app/services/cart.service';
 export class CarDetailDtoComponent implements OnInit {
   cars: CarDetailDto[];
   filterText: string;
+  selectedCar: any = null;
+
   constructor(
     private carDetailDtoService: CarDetailDtoService,
     private cartService: CartService,
@@ -45,6 +47,10 @@ export class CarDetailDtoComponent implements OnInit {
       .subscribe((response) => {
         this.cars = response.data;
       });
+  }
+
+  toggleDetails(car: any) {
+    this.selectedCar = this.selectedCar === car ? null : car;
   }
 
   addToCart(car: CarDetailDto) {

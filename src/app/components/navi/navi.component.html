@@ -1,17 +1,27 @@
-<nav class="navbar d-flex justify-content-between align-items-center">
-    <a routerLink="/" class="navbar-brand">🚗 Rentify</a>
+<div class="cark-container">
+    <nav class="navbar d-flex justify-content-between align-items-center">
+        <a routerLink="/" class="navbar-brand">🚗 Rentify</a>
 
-    <div class="d-flex align-items-center">
-        <a routerLink="/cars" class="nav-link">Araçlar</a>
-        <a routerLink="/car-add" class="nav-link">Araç Ekle</a>
-        <a routerLink="/car-delete" class="nav-link">Araç Sil</a>
-        <a routerLink="/register" class="nav-link">Kayıt Ol</a>
-        <a routerLink="/login" class="nav-link">Giriş Yap</a>
-    </div>
+        <div class="d-flex align-items-center">
+            <a routerLink="/cars" class="nav-link">Araçlar</a>
+            <a routerLink="/car-add" class="nav-link">Araç Ekle</a>
+            <a routerLink="/car-delete" class="nav-link">Araç Sil</a>
+            <a routerLink="/register" class="nav-link">Kayıt Ol</a>
+            <a routerLink="/login" class="nav-link">Giriş Yap</a>
+        </div>
 
-    <div class="cart-dropdown">
-        <div class="fw-bold mb-2">Sepet</div>
-        <button class="btn btn-outline-danger me-2">Temizle</button>
-        <button class="btn btn-primary">Satın Al</button>
-    </div>
-</nav>
+        <div class="cart-container">
+            <div class="cart-toggle">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Sepetim</span>
+            </div>
+            <div class="cart-dropdown">
+                <div class="cart-header">Sepetiniz</div>
+                <div class="cart-actions">
+                    <button class="btn-clear">Temizle</button>
+                    <button class="btn-buy">Satın Al</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
