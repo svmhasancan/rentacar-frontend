@@ -1,48 +1,74 @@
-<div class="car-update container py-4">
-    <div class="row">
-        <div class="col-md-8 mx-auto">
-            <div class="card p-4 rounded shadow-lg">
-                <h3 class="text-center mb-4">Araç Güncelle</h3>
-                <form [formGroup]="carUpdateForm" (ngSubmit)="updateCar()">
-                    <div class="mb-3">
-                        <label for="carName" class="form-label">Araç İsmi</label>
-                        <input type="text" id="carName" formControlName="carName" class="form-control"
-                            placeholder="Araç İsmi">
+<div class="dark-container py-5">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Araç Listesi -->
+            <div class="col-lg-6">
+                <div class="car-list">
+                    <h3 class="text-light mb-4">Araçlar</h3>
+                    <div *ngFor="let car of cars" class="car-card p-3 rounded shadow-sm mb-3">
+                        <img src="assets/default-car3.jpg" alt="{{car.brandName}} {{car.modelYear}}"
+                            class="img-fluid rounded mb-3">
+                        <h5 class="car-title">{{car.carName}} {{car.modelYear}}</h5>
+                        <p class="car-price">{{car.dailyPrice}} ₺ / Gün</p>
+                        <button class="btn btn-outline-light w-100" (click)="selectForUpdate(car)">Güncelle</button>
+                        <div *ngIf="selectedCar === car" class="car-details p-3 mt-3">
+                            <p><strong>Marka:</strong> {{car.brandName}}</p>
+                            <p><strong>Model:</strong> {{car.modelYear}}</p>
+                            <p><strong>Model:</strong> {{car.colorName}}</p>
+                            <p><strong>Günlük Fiyat:</strong> {{car.dailyPrice}} ₺</p>
+                            <p><strong>Açıklama:</strong> {{car.description || "Açıklama Yok"}}</p>
+                        </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="mb-3">
-                        <label for="brandName" class="form-label">Marka</label>
-                        <input type="text" id="brandName" formControlName="brandName" class="form-control"
-                            placeholder="Marka">
-                    </div>
+            <!-- Update Formu -->
+            <div class="col-lg-6">
+                <div class="form-card p-4 rounded shadow-lg">
+                    <h3 class="text-center mb-4 text-light">Araç Güncelle</h3>
+                    <form [formGroup]="carUpdateForm">
+                        <div class="mb-3">
+                            <label for="carName" class="form-label text-light">Araç İsmi</label>
+                            <input type="text" id="carName" formControlName="carName" class="dark-input"
+                                placeholder="Araç İsmi" value="carUpdateForm.carName">
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="modelYear" class="form-label">Model Yılı</label>
-                        <input type="number" id="modelYear" formControlName="modelYear" class="form-control"
-                            placeholder="Model Yılı">
-                    </div>
+                        <div class="mb-3">
+                            <label for="brandName" class="form-label text-light">Marka</label>
+                            <select id="brandId" class="dark-input" formControlName="brandId">
+                                <option *ngFor="let brand of brands" [value]="brand.id">{{ brand.name }}</option>
+                            </select>
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="colorName" class="form-label">Renk</label>
-                        <input type="text" id="colorName" formControlName="colorName" class="form-control"
-                            placeholder="Renk">
-                    </div>
+                        <div class="mb-3">
+                            <label for="colorName" class="form-label text-light">Renk</label>
+                            <select id="brandId" class="dark-input" formControlName="colorId">
+                                <option *ngFor="let color of colors" [value]="color.id">{{ color.name }}</option>
+                            </select>
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="dailyPrice" class="form-label">Günlük Ücret</label>
-                        <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control"
-                            placeholder="Günlük Ücret">
-                    </div>
+                        <div class="mb-3">
+                            <label for="modelYear" class="form-label text-light">Model Yılı</label>
+                            <input type="number" id="modelYear" formControlName="modelYear" class="dark-input"
+                                placeholder="Model Yılı">
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Açıklama</label>
-                        <input type="text" id="description" formControlName="description" class="form-control"
-                            placeholder="Açıklama">
-                    </div>
+                        <div class="mb-3">
+                            <label for="dailyPrice" class="form-label text-light">Günlük Ücret</label>
+                            <input type="number" id="dailyPrice" formControlName="dailyPrice" class="dark-input"
+                                placeholder="Günlük Ücret">
+                        </div>
 
-                    <button type="submit" [disabled]="carUpdateForm.invalid"
-                        class="btn btn-success w-100">Güncelle</button>
-                </form>
+                        <div class="mb-3">
+                            <label for="description" class="form-label text-light">Açıklama</label>
+                            <input type="text" id="description" formControlName="description" class="dark-input"
+                                placeholder="Açıklama">
+                        </div>
+
+                        <button (click)="updateCar()" [disabled]="carUpdateForm.invalid"
+                            class="dark-button w-100">Güncelle</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

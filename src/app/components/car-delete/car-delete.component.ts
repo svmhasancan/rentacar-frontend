@@ -31,44 +31,34 @@ export class CarDeleteComponent implements OnInit {
 
   delete(carDetail: CarDetailDto | null) {
     if (!carDetail) {
-      Swal.fire('Hata!', 'Silinecek araç bulunamadı.', 'error');
+      this.toastrService.error('Silinecek Araç Bulunamadı', 'Hata');
       return;
     }
-    Swal.fire({
-      title: 'Emin misiniz?',
-      text: `Bu aracı silmek üzeresiniz: ${carDetail.carName}`,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Evet, sil!',
-      cancelButtonText: 'Vazgeç',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const car: Car = {
-          id: carDetail.carId,
-          name: carDetail.carName,
-          brandId: 0,
-          colorId: 0,
-          modelYear: carDetail.modelYear,
-          dailyPrice: carDetail.dailyPrice,
-          description: carDetail.description,
-        };
 
-        this.carService.deleteCar(car).subscribe(
-          (response) => {
-            Swal.fire('Silindi!', response.message, 'success');
-            this.getCarsByDetail();
-          },
-          (error) => {
-            Swal.fire('Hata!', 'Araç silinirken bir sorun oluştu.', 'error');
-          }
+    const car: Car = {
+      id: carDetail.carId,
+      name: carDetail.carName,
+      brandId: 0,
+      colorId: 0,
+      modelYear: carDetail.modelYear,
+      dailyPrice: carDetail.dailyPrice,
+      description: carDetail.description,
+    };
+
+    this.carService.deleteCar(car).subscribe(
+      (response) => {
+        this.toastrService.success(
+          car.name,
+          'Araç Başarılı Bir Şekilde Silindi'
+        );
+        this.getCarsByDetail();
+      },
+      (error) => {
+        this.toastrService.error(
+          error.error.Message,
+          'Araç Silinirken Bir Hata Oluştu'
         );
       }
-    });
+    );
   }
 }
-
-/*
-
-*/

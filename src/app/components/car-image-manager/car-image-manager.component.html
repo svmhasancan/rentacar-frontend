@@ -1,0 +1,65 @@
+<div class="dark-container py-5">
+    <div class="container">
+        <div class="row g-4">
+
+            <!-- Araç Seçim Alanı -->
+            <div class="col-md-4 mb-3" *ngFor="let car of cars">
+                <div (click)="selectCar(car.carId)" [ngClass]="{'selected': selectedCarId === car.carId}"
+                    class="car-select-card p-3 rounded shadow-lg">
+                    <img src="assets/default-car-image" class="img-fluid rounded mb-3">
+                    <h5 class="text-light">{{car.carName}}</h5>
+                    <p class="text-light">{{car.modelYear}}</p>
+                </div>
+            </div>
+
+            <!-- Resim Yükleme Formu -->
+            <div class="col-lg-6">
+                <div class="form-card p-4 rounded shadow-lg">
+                    <h3 class="text-center mb-4 text-light">Fotoğraf Yükle</h3>
+                    <form [formGroup]="carImageForm" (ngSubmit)="uploadCarImage()">
+                        <input type="hidden" formControlName="carId">
+
+                        <div class="mb-3">
+                            <label for="imageFile" class="form-label text-light">Fotoğraf</label>
+                            <input type="file" id="imageFile" (change)="onFileSelected($event)" class="dark-input">
+                        </div>
+
+                        <button type="submit" [disabled]="!selectedCarId || !selectedFile" class="dark-button w-100">
+                            Fotoğraf Yükle
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Fotoğraf Listesi -->
+            <div class="col-lg-6">
+                <div class=" car-list">
+                    <h3 class="text-light mb-4">Yüklenen Fotoğraflar</h3>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        <div *ngFor="let image of carImages" class="col mb-3">
+                            <div class="car-card p-3 rounded shadow-sm">
+                                <img [src]="'https://localhost:port/Uploads/Images/' + image.imagePath"
+                                    alt="Araç Fotoğrafı" class="img-fluid rounded mb-3">
+                                <p class="text-light"><strong>Araç ID:</strong> {{image.carId}}</p>
+                                <p class="text-light"><strong>Yüklenme Tarihi:</strong> {{image.date | date:'short'}}
+                                </p>
+
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-outline-danger flex-fill" (click)="deleteImage(image.id)">
+                                        Sil
+                                    </button>
+
+                                    <label class="btn btn-outline-warning flex-fill m-0">
+                                        Güncelle
+                                        <input type="file" hidden (change)="onUpdateFileSelected($event, image.id)">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

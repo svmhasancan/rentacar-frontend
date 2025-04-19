@@ -17,6 +17,11 @@ export class CarService {
     return this.httpClient.get<ListResponseModel<Car>>(newUrl);
   }
 
+  getCarById(id: number): Observable<ListResponseModel<Car>> {
+    let newUrl = this.apiUrl + '/getcarbyid?id=' + id;
+    return this.httpClient.get<ListResponseModel<Car>>(newUrl);
+  }
+
   getCarsByBrandId(id: number): Observable<ListResponseModel<Car>> {
     let newUrl = this.apiUrl + '/getcarsbybrandid?id=' + id.toString();
     return this.httpClient.get<ListResponseModel<Car>>(newUrl);
@@ -33,11 +38,9 @@ export class CarService {
   }
 
   // Add this method to the existing car.service.ts file
-  getCarById(id: number) {
-    return this.httpClient.get<any>(`${this.apiUrl}/${id}`);
-  }
 
-  updateCar(id: number, car: any) {
-    return this.httpClient.put<any>(`${this.apiUrl}/${id}`, car);
+  updateCar(car: Car) {
+    let newUrl = this.apiUrl + '/update';
+    return this.httpClient.post<ResponseModel>(newUrl, car);
   }
 }

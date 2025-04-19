@@ -19,6 +19,7 @@ import { CarDeleteComponent } from './components/car-delete/car-delete.component
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { CarImageManagerComponent } from './components/car-image-manager/car-image-manager.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { LoginComponent } from './components/login/login.component';
     CarUpdateComponent,
     RegisterComponent,
     LoginComponent,
+    CarImageManagerComponent,
   ],
   imports: [
     BrowserModule,

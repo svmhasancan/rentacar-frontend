@@ -1,7 +1,8 @@
 <div class="dark-container">
     <div class="brand-list container py-4">
         <div class="brand-item" *ngFor="let brand of brands">
-            <img [src]="getBrandIcon(brand)" alt="{{ brand.name }}" class="brand-logo" />
+            <img (click)="setCurrentBrand(brand)" [src]="getBrandIcon(brand)" alt="{{ brand.name }}"
+                class="brand-logo" />
             <span class="brand-name">{{ brand.name }}</span>
         </div>
     </div>

@@ -1,4 +1,4 @@
-import { CarImage } from './carImage';
+import { CarImage } from './carImageDto';
 
 export interface CarDetailDto {
   carId: number;

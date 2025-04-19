@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CarDetailDto } from 'src/app/models/car-detail-dto';
-import { CarImage } from 'src/app/models/carImage';
 import { CarDetailDtoService } from 'src/app/services/car-detail-dto.service';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -19,7 +18,7 @@ export class CarDetailDtoComponent implements OnInit {
   constructor(
     private carDetailDtoService: CarDetailDtoService,
     private cartService: CartService,
-    private toastr: ToastrService,
+    private toastrService: ToastrService,
     private activatedRoute: ActivatedRoute
   ) {}
 
@@ -55,6 +54,6 @@ export class CarDetailDtoComponent implements OnInit {
 
   addToCart(car: CarDetailDto) {
     this.cartService.addToCart(car);
-    this.toastr.success(car.carName, 'Sepete Eklendi!');
+    this.toastrService.success(car.carName, 'Sepete Eklendi!');
   }
 }

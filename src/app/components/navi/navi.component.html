@@ -10,16 +10,27 @@
             <a routerLink="/login" class="nav-link">Giriş Yap</a>
         </div>
 
+        <!-- Sepet Alanı -->
         <div class="cart-container">
             <div class="cart-toggle">
                 <i class="fas fa-shopping-cart"></i>
-                <span>Sepetim</span>
+                <span>Sepet</span>
             </div>
             <div class="cart-dropdown">
                 <div class="cart-header">Sepetiniz</div>
+                <div class="cart-items">
+                    <div class="cart-item" *ngFor="let item of cartItems">
+                        <span class="car-name">{{item.car.carName}}</span>
+                        <span class="car-price">{{item.car.dailyPrice}} ₺</span>
+                        <span class="car-quantity">{{item.quantity}}</span>
+                        <button (click)="removeFromCart(item)" class="remove-item-btn" title="Kaldır">
+                            <i class="fas fa-times">X</i>
+                        </button>
+                    </div>
+                </div>
                 <div class="cart-actions">
-                    <button class="btn-clear">Temizle</button>
-                    <button class="btn-buy">Satın Al</button>
+                    <button (click)="clearCart()" class="btn-clear">Sepeti Temizle</button>
+                    <button (click)="buyCart()" class="btn-buy">Satın Al</button>
                 </div>
             </div>
         </div>

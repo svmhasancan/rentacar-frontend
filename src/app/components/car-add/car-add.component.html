@@ -1,39 +1,47 @@
-<div class="dark-container">
-    <div class="car-add container py-4">
-        <div class="row">
-            <div class="col-md-6 mx-auto">
-                <div class="card p-4 rounded shadow-lg">
-                    <h3 class="text-center mb-4">Yeni Araç Ekle</h3>
-                    <form [formGroup]="carAddForm" (ngSubmit)="add()">
-                        <div class="mb-3">
-                            <label for="carName" class="form-label">Araç İsmi</label>
-                            <input type="text" id="carName" class="form-control" formControlName="name"
-                                placeholder="Araç İsmi">
-                        </div>
-                        <div class="mb-3">
-                            <label for="brandId" class="form-label">Marka</label>
-                            <input type="text" id="brandId" class="form-control" formControlName="brand"
-                                placeholder="Marka">
-                        </div>
-                        <div class="mb-3">
-                            <label for="modelYear" class="form-label">Model Yılı</label>
-                            <input type="number" id="modelYear" class="form-control" formControlName="modelYear"
-                                placeholder="Model Yılı">
-                        </div>
-                        <div class="mb-3">
-                            <label for="dailyPrice" class="form-label">Günlük Ücret</label>
-                            <input type="number" id="dailyPrice" class="form-control" formControlName="dailyPrice"
-                                placeholder="Günlük Ücret">
-                        </div>
-                        <div class="mb-3">
-                            <label for="description" class="form-label">Açıklama</label>
-                            <input type="text" id="description" class="form-control" formControlName="description"
-                                placeholder="Açıklama">
-                        </div>
-                        <button type="submit" class="btn btn-outline-light w-100 mt-3">Ekle</button>
-                    </form>
-                </div>
+<div class="form-container container py-5">
+    <div class="form-card p-4 rounded shadow-lg mx-auto">
+        <h2 class="text-center mb-4 text-light">Yeni Araç Ekle</h2>
+        <form [formGroup]="carAddForm" (ngSubmit)="add()">
+
+            <div class="form-group mb-3">
+                <label for="name" class="text-light">Araç İsmi</label>
+                <input type="text" id="name" class="dark-input" formControlName="name" placeholder="Araç İsmi">
             </div>
-        </div>
+
+            <div class="form-group mb-3">
+                <label for="brandId" class="text-light">Marka</label>
+                <select id="brandId" class="dark-input" formControlName="brandId">
+                    <option *ngFor="let brand of brands" [value]="brand.id">{{ brand.name }}</option>
+                </select>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="colorId" class="text-light">Renk</label>
+                <select id="colorId" class="dark-input" formControlName="colorId">
+                    <option *ngFor="let color of colors" [value]="color.id">{{ color.name }}</option>
+                </select>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="modelYear" class="text-light">Model Yılı</label>
+                <input type="number" id="modelYear" class="dark-input" formControlName="modelYear"
+                    placeholder="Model Yılı">
+            </div>
+
+
+            <div class="form-group mb-3">
+                <label for="dailyPrice" class="text-light">Günlük Ücret</label>
+                <input type="number" id="dailyPrice" class="dark-input" formControlName="dailyPrice"
+                    placeholder="Günlük Ücret">
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="description" class="text-light">Açıklama</label>
+                <input type="text" id="description" class="dark-input" formControlName="description"
+                    placeholder="Açıklama">
+            </div>
+
+            <button type="submit" class="dark-button w-100" [disabled]="carAddForm.invalid">Ekle</button>
+        </form>
     </div>
 </div>

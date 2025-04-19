@@ -6,6 +6,7 @@ import { CarDeleteComponent } from './components/car-delete/car-delete.component
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { CarImageManagerComponent } from './components/car-image-manager/car-image-manager.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: CarDetailDtoComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'cars/add', component: CarAddComponent },
   { path: 'cars/delete', component: CarDeleteComponent },
   { path: 'cars/update', component: CarUpdateComponent },
+  //{ path: 'cars/image-manager', component: CarImageManagerComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
 ];

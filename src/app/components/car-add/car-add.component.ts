@@ -6,7 +6,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Brand } from 'src/app/models/brand';
+import { Color } from 'src/app/models/color';
+import { BrandService } from 'src/app/services/brand.service';
 import { CarService } from 'src/app/services/car.service';
+import { ColorService } from 'src/app/services/color.service';
 
 @Component({
   selector: 'app-car-add',
@@ -15,14 +19,20 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarAddComponent implements OnInit {
   carAddForm: FormGroup;
+  colors: Color[];
+  brands: Brand[];
   constructor(
     private formBuilder: FormBuilder,
     private carService: CarService,
+    private brandService: BrandService,
+    private colorService: ColorService,
     private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
     this.createCarAddForm();
+    this.getBrands();
+    this.getColors();
   }
 
   createCarAddForm() {
@@ -57,5 +67,17 @@ export class CarAddComponent implements OnInit {
     } else {
       this.toastrService.error('Formunuz Eksik', 'Araç Eklenemedi!');
     }
+  }
+
+  getBrands() {
+    this.brandService.getBrands().subscribe((response) => {
+      this.brands = response.data;
+    });
+  }
+
+  getColors() {
+    this.colorService.getColors().subscribe((response) => {
+      this.colors = response.data;
+    });
   }
 }
