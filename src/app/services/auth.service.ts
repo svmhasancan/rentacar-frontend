@@ -1,21 +1,43 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { TokenModel } from '../models/tokenModel';
+import { LoginModel } from '../models/loginModel';
+import { SingleResponseModel } from '../models/singleResponseModel';
+import { RegisterModel } from '../models/registerModel';
+import { ListResponseModel } from '../models/listResponseModel';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  apiUrl = '';
+  apiUrl = 'https://localhost:44336/api/Auth';
 
   constructor(private httpClient: HttpClient) {}
 
-  // Add this method to the existing auth.service.ts file
-  register(user: any) {
-    return this.httpClient.post<any>(`${this.apiUrl}/register`, user);
+  login(loginModel: LoginModel): Observable<SingleResponseModel<TokenModel>> {
+    let newUrl = this.apiUrl + '/login';
+    return this.httpClient.post<SingleResponseModel<TokenModel>>(
+      newUrl,
+      loginModel
+    );
   }
 
-  // Add this method to the existing auth.service.ts file
-  login(user: any) {
-    return this.httpClient.post<any>(`${this.apiUrl}/login`, user);
+  register(
+    registerModel: RegisterModel
+  ): Observable<SingleResponseModel<RegisterModel>> {
+    let newUrl = this.apiUrl + '/register';
+    return this.httpClient.post<SingleResponseModel<RegisterModel>>(
+      newUrl,
+      registerModel
+    );
+  }
+
+  isAuthenticeted() {
+    if (localStorage.getItem('token')) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
